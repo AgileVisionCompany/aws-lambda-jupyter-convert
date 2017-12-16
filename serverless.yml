@@ -1,0 +1,17 @@
+service: jupyter-nbformat
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: us-east-1
+plugins:
+  - serverless-python-requirements
+    
+functions:
+  nbformat:
+    handler: handler.nbformathandler
+    events:
+      - http:
+          path: notebooks/execute
+          method: post
