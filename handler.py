@@ -7,6 +7,9 @@ from io import StringIO, BytesIO
 import multipart as mp
 from multipart import tob
 import base64
+import os
+
+os.environ['PYTHONPATH'] = os.getcwd()
 
 logger = logging.getLogger(__name__)
 
