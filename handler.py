@@ -13,6 +13,16 @@ os.environ['PYTHONPATH'] = os.getcwd()
 
 logger = logging.getLogger(__name__)
 
+def execute_notebook(source) -> str:
+    nb = nbformat.read(source, as_version=4)
+    ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
+    ep.preprocess(nb, {'metadata': {'path': '/tmp/'}})
+
+    ex = StringIO()
+    nbformat.write(nb, ex)
+
+    return ex.getvalue()
+
 def nbformathandler(event, context):
 
     headers = event['headers'];
@@ -22,15 +32,7 @@ def nbformathandler(event, context):
     data = httpbody.get('data').file.read()
 
     in_memory_source = BytesIO(data)
-    nb = nbformat.read(in_memory_source, as_version=4)
-    ep = ExecutePreprocessor(timeout=600, kernel_name='python3')
-    ep.preprocess(nb, {'metadata': {'path': '/tmp/'}})
-
-    ex = StringIO()
-    nbformat.write(nb, ex) 
-
-    res = ex.getvalue() 
-    ex.close()      
+    res = execute_notebook(in_memory_source)
 
     response = {
         "statusCode": 200,
