@@ -29,7 +29,7 @@ def nbformathandler(event, context):
     ex = StringIO()
     nbformat.write(nb, ex) 
 
-    res = ex.getValue() 
+    res = ex.getvalue() 
     ex.close()      
 
     response = {
