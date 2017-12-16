@@ -1,0 +1,27 @@
+{
+  "name": "aws-lambda-jupyter-convert",
+  "version": "1.0.0",
+  "description": "PoC of a REST API that uses nbformat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgileVisionCompany/aws-lambda-jupyter-convert.git"
+  },
+  "keywords": [
+    "serverless",
+    "jupyter",
+    "lambda"
+  ],
+  "author": "AgileVision.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AgileVisionCompany/aws-lambda-jupyter-convert/issues"
+  },
+  "homepage": "https://github.com/AgileVisionCompany/aws-lambda-jupyter-convert#readme",
+  "devDependencies": {
+    "serverless-python-requirements": "^3.0.11"
+  }
+}
