@@ -7,7 +7,11 @@ provider:
   region: us-east-1
 plugins:
   - serverless-python-requirements
-    
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
 functions:
   nbformat:
     handler: handler.nbformathandler
